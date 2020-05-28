@@ -1,5 +1,6 @@
-package soa.work.scheduler.demo
+package com.sdzshn3.demo
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,22 +11,20 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_layout_employee.view.*
 import kotlinx.android.synthetic.main.item_layout_student.view.*
 
+@Suppress("PrivatePropertyName")
 class Adapter(private val commonList: List<Any>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private val STUDENT_TYPE = 1
-    private val EMPLOYEE_TYPE = 2
 
     override fun getItemViewType(position: Int): Int {
         val item = commonList[position]
         return if (item is Student) {
-            STUDENT_TYPE
+            LayoutType.STUDENT.type
         } else {
-            EMPLOYEE_TYPE
+            LayoutType.EMPLOYEE.type
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == STUDENT_TYPE) {
+        return if (viewType == LayoutType.STUDENT.type) {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_layout_student, parent,false)
             StudentViewHolder(view)
         } else {
@@ -34,9 +33,10 @@ class Adapter(private val commonList: List<Any>): RecyclerView.Adapter<RecyclerV
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder.itemViewType) {
-            STUDENT_TYPE -> {
+            LayoutType.STUDENT.type -> {
                 val studentViewHolder = holder as StudentViewHolder
                 val currentStudent = commonList[position] as Student
 
@@ -45,7 +45,7 @@ class Adapter(private val commonList: List<Any>): RecyclerView.Adapter<RecyclerV
                 studentViewHolder.studentLocationTextView.text = "Location: ${currentStudent.location}"
                 studentViewHolder.studentTagLineTextView.text = "Tag Line: ${currentStudent.tagLine}"
             }
-            EMPLOYEE_TYPE -> {
+            LayoutType.EMPLOYEE.type -> {
                 val employeeViewHolder = holder as EmployeeViewHolder
                 val currentEmployee = commonList[position] as Employee
 

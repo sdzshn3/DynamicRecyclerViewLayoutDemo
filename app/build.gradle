@@ -7,7 +7,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "soa.work.scheduler.demo"
+        applicationId "com.sdzshn3.demo"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -48,4 +48,7 @@ dependencies {
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3'
 }
