@@ -14,9 +14,6 @@ import kotlinx.android.synthetic.main.item_layout_student.view.*
 @Suppress("PrivatePropertyName")
 class Adapter(private val commonList: List<Any>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    //private val STUDENT_TYPE = 1
-    //private val EMPLOYEE_TYPE = 2
-
     override fun getItemViewType(position: Int): Int {
         val item = commonList[position]
         return if (item is Student) {
