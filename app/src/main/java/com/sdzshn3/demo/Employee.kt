@@ -1,4 +1,4 @@
-package soa.work.scheduler.demo
+package com.sdzshn3.demo
 
 import com.google.gson.annotations.SerializedName
 

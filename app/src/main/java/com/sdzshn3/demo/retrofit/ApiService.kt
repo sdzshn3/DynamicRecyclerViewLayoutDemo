@@ -1,9 +1,9 @@
-package soa.work.scheduler.demo.retrofit
+package com.sdzshn3.demo.retrofit
 
 import retrofit2.Response
 import retrofit2.http.GET
-import soa.work.scheduler.demo.Employee
-import soa.work.scheduler.demo.Student
+import com.sdzshn3.demo.Employee
+import com.sdzshn3.demo.Student
 
 interface ApiService {
     @GET("5cdf27653000002b00430d14")

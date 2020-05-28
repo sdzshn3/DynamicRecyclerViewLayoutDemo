@@ -1,4 +1,4 @@
-package soa.work.scheduler.demo.retrofit
+package com.sdzshn3.demo.retrofit
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
