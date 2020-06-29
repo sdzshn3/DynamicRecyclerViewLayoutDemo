@@ -10,13 +10,18 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import com.sdzshn3.demo.retrofit.ApiClient
 import com.sdzshn3.demo.retrofit.ApiService
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val commonList = ArrayList<Any>()
-    private lateinit var apiService: ApiService
+    @Inject
+    lateinit var apiService: ApiService
+    @Inject
+    lateinit var interoperability: Interoperability
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +40,6 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        apiService = ApiClient.getApiService()
-
         CoroutineScope(Dispatchers.IO).launch {
             val employeesResponse = apiService.getEmployees()
             val studentsResponse = apiService.getStudents()
@@ -45,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 try {
                     if (employeesResponse.isSuccessful && studentsResponse.isSuccessful) {
 
-                        commonList.addAll(Interoperability.processData(employeesResponse.body(), studentsResponse.body()))
+                        commonList.addAll(interoperability.processData(employeesResponse.body(), studentsResponse.body()))
                         /*var lastPositionOfStudent = 0
                         for (i in 0 until employeesResponse.body()?.size!!) {
                             lastPositionOfStudent = i

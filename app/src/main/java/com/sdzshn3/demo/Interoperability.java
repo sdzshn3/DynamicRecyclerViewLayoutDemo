@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Interoperability {
-    public static List<Object> processData(List<Employee> employees, List<Student> students) {
+    public List<Object> processData(List<Employee> employees, List<Student> students) {
         ArrayList<Object> objects = new ArrayList<>();
         int lastPositionOfStudent = 0;
         for (int i = 0; i < employees.size(); i++) {
